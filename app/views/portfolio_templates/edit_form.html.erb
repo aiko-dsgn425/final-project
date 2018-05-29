@@ -1,0 +1,89 @@
+<!-- Validation failure messages -->
+<% if @portfolio.errors.any? %>
+  <% @portfolio.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit portfolio #<%= @portfolio.id %>
+</h1>
+
+<hr>
+
+<form action="/update_portfolio/<%= @portfolio.id %>" method="post">
+  <!-- Label and input for name -->
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @portfolio.name %>">
+  </div>
+
+  <!-- Label and input for description -->
+  <div class="form-group">
+    <label for="description">
+      Description
+    </label>
+
+    <textarea id="description" name="description" class="form-control" rows="3"><%= @portfolio.description %></textarea>
+  </div>
+
+  <!-- Label and input for initial_value -->
+  <div class="form-group">
+    <label for="initial_value">
+      Initial value
+    </label>
+
+    <input type="text" id="initial_value" name="initial_value" class="form-control" value="<%= @portfolio.initial_value %>">
+  </div>
+
+  <!-- Label and input for returns_sinceinception -->
+  <div class="form-group">
+    <label for="returns_sinceinception">
+      Returns sinceinception
+    </label>
+
+    <input type="text" id="returns_sinceinception" name="returns_sinceinception" class="form-control" value="<%= @portfolio.returns_sinceinception %>">
+  </div>
+
+  <!-- Label and input for expected_returns -->
+  <div class="form-group">
+    <label for="expected_returns">
+      Expected returns
+    </label>
+
+    <input type="text" id="expected_returns" name="expected_returns" class="form-control" value="<%= @portfolio.expected_returns %>">
+  </div>
+
+  <!-- Label and input for expected_volatility -->
+  <div class="form-group">
+    <label for="expected_volatility">
+      Expected volatility
+    </label>
+
+    <input type="text" id="expected_volatility" name="expected_volatility" class="form-control" value="<%= @portfolio.expected_volatility %>">
+  </div>
+
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @portfolio.user_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update portfolio
+  </button>
+</form>
+
+<hr>
+
+<a href="/portfolios">
+  Go back
+</a>

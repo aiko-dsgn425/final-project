@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @ticker.present? %>
+  <% if @ticker.errors.any? %>
+    <% @ticker.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new ticker
+</h1>
+
+<hr>
+
+<form action="/create_ticker" method="post">
+  <!-- Label and input for symbol -->
+  <div class="form-group">
+    <label for="symbol">
+      Symbol
+    </label>
+
+    <input type="text" id="symbol" name="symbol" class="form-control" value="<%= @ticker.try(:symbol) %>">
+  </div>
+
+  <!-- Label and input for category -->
+  <div class="form-group">
+    <label for="category">
+      Category
+    </label>
+
+    <input type="text" id="category" name="category" class="form-control" value="<%= @ticker.try(:category) %>">
+  </div>
+
+  <!-- Label and input for security_type -->
+  <div class="form-group">
+    <label for="security_type">
+      Security type
+    </label>
+
+    <input type="text" id="security_type" name="security_type" class="form-control" value="<%= @ticker.try(:security_type) %>">
+  </div>
+
+  <!-- Label and input for url -->
+  <div class="form-group">
+    <label for="url">
+      Url
+    </label>
+
+    <input type="text" id="url" name="url" class="form-control" value="<%= @ticker.try(:url) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create ticker
+  </button>
+</form>
+
+<hr>
+
+<a href="/tickers">
+  Go back
+</a>

@@ -1,0 +1,106 @@
+<h1>
+  All portfolios
+</h1>
+
+<a href="/portfolios/new">
+  Add a new portfolio
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Description
+    </th>
+
+    <th>
+      Initial value
+    </th>
+
+    <th>
+      Returns sinceinception
+    </th>
+
+    <th>
+      Expected returns
+    </th>
+
+    <th>
+      Expected volatility
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @portfolios.each do |portfolio| %>
+  <tr>
+    <td>
+      <%= portfolio.id %>
+    </td>
+
+    <td>
+      <%= portfolio.name %>
+    </td>
+
+    <td>
+      <%= portfolio.description %>
+    </td>
+
+    <td>
+      <%= portfolio.initial_value %>
+    </td>
+
+    <td>
+      <%= portfolio.returns_sinceinception %>
+    </td>
+
+    <td>
+      <%= portfolio.expected_returns %>
+    </td>
+
+    <td>
+      <%= portfolio.expected_volatility %>
+    </td>
+
+    <td>
+      <%= portfolio.user_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(portfolio.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(portfolio.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/portfolios/<%= portfolio.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

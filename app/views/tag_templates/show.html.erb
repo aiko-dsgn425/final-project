@@ -1,0 +1,49 @@
+<h1>
+  Tag #<%= @tag.id %> details
+</h1>
+
+<a href="/tags/<%= @tag.id %>/edit">
+  Edit tag
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @tag.name %>
+  </dd>
+
+  <dt>
+    Description
+  </dt>
+  <dd>
+    <%= @tag.description %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@tag.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@tag.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_tag/<%= @tag.id %>">
+  Delete tag
+</a>
+
+<hr>
+
+<a href="/tags">
+  Go back
+</a>

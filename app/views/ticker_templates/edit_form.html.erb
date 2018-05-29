@@ -1,0 +1,62 @@
+<!-- Validation failure messages -->
+<% if @ticker.errors.any? %>
+  <% @ticker.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit ticker #<%= @ticker.id %>
+</h1>
+
+<hr>
+
+<form action="/update_ticker/<%= @ticker.id %>" method="post">
+  <!-- Label and input for symbol -->
+  <div class="form-group">
+    <label for="symbol">
+      Symbol
+    </label>
+
+    <input type="text" id="symbol" name="symbol" class="form-control" value="<%= @ticker.symbol %>">
+  </div>
+
+  <!-- Label and input for category -->
+  <div class="form-group">
+    <label for="category">
+      Category
+    </label>
+
+    <input type="text" id="category" name="category" class="form-control" value="<%= @ticker.category %>">
+  </div>
+
+  <!-- Label and input for security_type -->
+  <div class="form-group">
+    <label for="security_type">
+      Security type
+    </label>
+
+    <input type="text" id="security_type" name="security_type" class="form-control" value="<%= @ticker.security_type %>">
+  </div>
+
+  <!-- Label and input for url -->
+  <div class="form-group">
+    <label for="url">
+      Url
+    </label>
+
+    <input type="text" id="url" name="url" class="form-control" value="<%= @ticker.url %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update ticker
+  </button>
+</form>
+
+<hr>
+
+<a href="/tickers">
+  Go back
+</a>

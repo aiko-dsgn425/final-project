@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @portfolio_allocation.present? %>
+  <% if @portfolio_allocation.errors.any? %>
+    <% @portfolio_allocation.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new portfolio allocation
+</h1>
+
+<hr>
+
+<form action="/create_portfolio_allocation" method="post">
+  <!-- Label and input for portfolio_id -->
+  <div class="form-group">
+    <label for="portfolio_id">
+      Portfolio
+    </label>
+
+    <input type="text" id="portfolio_id" name="portfolio_id" class="form-control" value="<%= @portfolio_allocation.try(:portfolio_id) %>">
+  </div>
+
+  <!-- Label and input for ticker_id -->
+  <div class="form-group">
+    <label for="ticker_id">
+      Ticker
+    </label>
+
+    <input type="text" id="ticker_id" name="ticker_id" class="form-control" value="<%= @portfolio_allocation.try(:ticker_id) %>">
+  </div>
+
+  <!-- Label and input for percent_allocated -->
+  <div class="form-group">
+    <label for="percent_allocated">
+      Percent allocated
+    </label>
+
+    <input type="text" id="percent_allocated" name="percent_allocated" class="form-control" value="<%= @portfolio_allocation.try(:percent_allocated) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create portfolio allocation
+  </button>
+</form>
+
+<hr>
+
+<a href="/portfolio_allocations">
+  Go back
+</a>

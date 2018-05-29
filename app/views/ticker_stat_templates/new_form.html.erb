@@ -1,0 +1,83 @@
+<!-- Validation failure messages -->
+<% if @ticker_stat.present? %>
+  <% if @ticker_stat.errors.any? %>
+    <% @ticker_stat.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new ticker stat
+</h1>
+
+<hr>
+
+<form action="/create_ticker_stat" method="post">
+  <!-- Label and input for sharpe_ratio -->
+  <div class="form-group">
+    <label for="sharpe_ratio">
+      Sharpe ratio
+    </label>
+
+    <input type="text" id="sharpe_ratio" name="sharpe_ratio" class="form-control" value="<%= @ticker_stat.try(:sharpe_ratio) %>">
+  </div>
+
+  <!-- Label and input for annual_returns -->
+  <div class="form-group">
+    <label for="annual_returns">
+      Annual returns
+    </label>
+
+    <input type="text" id="annual_returns" name="annual_returns" class="form-control" value="<%= @ticker_stat.try(:annual_returns) %>">
+  </div>
+
+  <!-- Label and input for ticker_id -->
+  <div class="form-group">
+    <label for="ticker_id">
+      Ticker
+    </label>
+
+    <input type="text" id="ticker_id" name="ticker_id" class="form-control" value="<%= @ticker_stat.try(:ticker_id) %>">
+  </div>
+
+  <!-- Label and input for annualized_risk -->
+  <div class="form-group">
+    <label for="annualized_risk">
+      Annualized risk
+    </label>
+
+    <input type="text" id="annualized_risk" name="annualized_risk" class="form-control" value="<%= @ticker_stat.try(:annualized_risk) %>">
+  </div>
+
+  <!-- Label and input for expense_ratio -->
+  <div class="form-group">
+    <label for="expense_ratio">
+      Expense ratio
+    </label>
+
+    <input type="text" id="expense_ratio" name="expense_ratio" class="form-control" value="<%= @ticker_stat.try(:expense_ratio) %>">
+  </div>
+
+  <!-- Label and input for current -->
+  <div class="form-check">
+    <input type="hidden" value="0" name="current">
+    <input id="current" class="form-check-input" name="current" type="checkbox" <%= "checked" if @ticker_stat.try(:current) %>>
+
+    <label for="current" class="form-check-label">
+      Current
+    </label>
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create ticker stat
+  </button>
+</form>
+
+<hr>
+
+<a href="/ticker_stats">
+  Go back
+</a>

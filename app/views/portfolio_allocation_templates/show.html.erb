@@ -1,0 +1,56 @@
+<h1>
+  Portfolio allocation #<%= @portfolio_allocation.id %> details
+</h1>
+
+<a href="/portfolio_allocations/<%= @portfolio_allocation.id %>/edit">
+  Edit portfolio allocation
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Portfolio
+  </dt>
+  <dd>
+    <%= @portfolio_allocation.portfolio_id %>
+  </dd>
+
+  <dt>
+    Ticker
+  </dt>
+  <dd>
+    <%= @portfolio_allocation.ticker_id %>
+  </dd>
+
+  <dt>
+    Percent allocated
+  </dt>
+  <dd>
+    <%= @portfolio_allocation.percent_allocated %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@portfolio_allocation.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@portfolio_allocation.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_portfolio_allocation/<%= @portfolio_allocation.id %>">
+  Delete portfolio allocation
+</a>
+
+<hr>
+
+<a href="/portfolio_allocations">
+  Go back
+</a>

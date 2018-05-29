@@ -1,0 +1,63 @@
+<h1>
+  User tickerlist #<%= @user_tickerlist.id %> details
+</h1>
+
+<a href="/user_tickerlists/<%= @user_tickerlist.id %>/edit">
+  Edit user tickerlist
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @user_tickerlist.user_id %>
+  </dd>
+
+  <dt>
+    Ticker
+  </dt>
+  <dd>
+    <%= @user_tickerlist.ticker_id %>
+  </dd>
+
+  <dt>
+    Tag
+  </dt>
+  <dd>
+    <%= @user_tickerlist.tag_id %>
+  </dd>
+
+  <dt>
+    Watchlist
+  </dt>
+  <dd>
+    <%= @user_tickerlist.watchlist %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@user_tickerlist.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@user_tickerlist.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_user_tickerlist/<%= @user_tickerlist.id %>">
+  Delete user tickerlist
+</a>
+
+<hr>
+
+<a href="/user_tickerlists">
+  Go back
+</a>

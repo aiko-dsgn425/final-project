@@ -1,0 +1,98 @@
+<h1>
+  All ticker stats
+</h1>
+
+<a href="/ticker_stats/new">
+  Add a new ticker stat
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Sharpe ratio
+    </th>
+
+    <th>
+      Annual returns
+    </th>
+
+    <th>
+      Ticker
+    </th>
+
+    <th>
+      Annualized risk
+    </th>
+
+    <th>
+      Expense ratio
+    </th>
+
+    <th>
+      Current
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @ticker_stats.each do |ticker_stat| %>
+  <tr>
+    <td>
+      <%= ticker_stat.id %>
+    </td>
+
+    <td>
+      <%= ticker_stat.sharpe_ratio %>
+    </td>
+
+    <td>
+      <%= ticker_stat.annual_returns %>
+    </td>
+
+    <td>
+      <%= ticker_stat.ticker_id %>
+    </td>
+
+    <td>
+      <%= ticker_stat.annualized_risk %>
+    </td>
+
+    <td>
+      <%= ticker_stat.expense_ratio %>
+    </td>
+
+    <td>
+      <%= ticker_stat.current %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(ticker_stat.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(ticker_stat.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/ticker_stats/<%= ticker_stat.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

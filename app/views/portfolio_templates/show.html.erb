@@ -1,0 +1,84 @@
+<h1>
+  Portfolio #<%= @portfolio.id %> details
+</h1>
+
+<a href="/portfolios/<%= @portfolio.id %>/edit">
+  Edit portfolio
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @portfolio.name %>
+  </dd>
+
+  <dt>
+    Description
+  </dt>
+  <dd>
+    <%= @portfolio.description %>
+  </dd>
+
+  <dt>
+    Initial value
+  </dt>
+  <dd>
+    <%= @portfolio.initial_value %>
+  </dd>
+
+  <dt>
+    Returns sinceinception
+  </dt>
+  <dd>
+    <%= @portfolio.returns_sinceinception %>
+  </dd>
+
+  <dt>
+    Expected returns
+  </dt>
+  <dd>
+    <%= @portfolio.expected_returns %>
+  </dd>
+
+  <dt>
+    Expected volatility
+  </dt>
+  <dd>
+    <%= @portfolio.expected_volatility %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @portfolio.user_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@portfolio.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@portfolio.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_portfolio/<%= @portfolio.id %>">
+  Delete portfolio
+</a>
+
+<hr>
+
+<a href="/portfolios">
+  Go back
+</a>

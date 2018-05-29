@@ -1,0 +1,77 @@
+<h1>
+  Ticker stat #<%= @ticker_stat.id %> details
+</h1>
+
+<a href="/ticker_stats/<%= @ticker_stat.id %>/edit">
+  Edit ticker stat
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Sharpe ratio
+  </dt>
+  <dd>
+    <%= @ticker_stat.sharpe_ratio %>
+  </dd>
+
+  <dt>
+    Annual returns
+  </dt>
+  <dd>
+    <%= @ticker_stat.annual_returns %>
+  </dd>
+
+  <dt>
+    Ticker
+  </dt>
+  <dd>
+    <%= @ticker_stat.ticker_id %>
+  </dd>
+
+  <dt>
+    Annualized risk
+  </dt>
+  <dd>
+    <%= @ticker_stat.annualized_risk %>
+  </dd>
+
+  <dt>
+    Expense ratio
+  </dt>
+  <dd>
+    <%= @ticker_stat.expense_ratio %>
+  </dd>
+
+  <dt>
+    Current
+  </dt>
+  <dd>
+    <%= @ticker_stat.current %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@ticker_stat.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@ticker_stat.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_ticker_stat/<%= @ticker_stat.id %>">
+  Delete ticker stat
+</a>
+
+<hr>
+
+<a href="/ticker_stats">
+  Go back
+</a>

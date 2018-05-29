@@ -1,0 +1,63 @@
+<h1>
+  Ticker #<%= @ticker.id %> details
+</h1>
+
+<a href="/tickers/<%= @ticker.id %>/edit">
+  Edit ticker
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Symbol
+  </dt>
+  <dd>
+    <%= @ticker.symbol %>
+  </dd>
+
+  <dt>
+    Category
+  </dt>
+  <dd>
+    <%= @ticker.category %>
+  </dd>
+
+  <dt>
+    Security type
+  </dt>
+  <dd>
+    <%= @ticker.security_type %>
+  </dd>
+
+  <dt>
+    Url
+  </dt>
+  <dd>
+    <%= @ticker.url %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@ticker.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@ticker.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_ticker/<%= @ticker.id %>">
+  Delete ticker
+</a>
+
+<hr>
+
+<a href="/tickers">
+  Go back
+</a>

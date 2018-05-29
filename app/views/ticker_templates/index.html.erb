@@ -1,0 +1,82 @@
+<h1>
+  All tickers
+</h1>
+
+<a href="/tickers/new">
+  Add a new ticker
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Symbol
+    </th>
+
+    <th>
+      Category
+    </th>
+
+    <th>
+      Security type
+    </th>
+
+    <th>
+      Url
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @tickers.each do |ticker| %>
+  <tr>
+    <td>
+      <%= ticker.id %>
+    </td>
+
+    <td>
+      <%= ticker.symbol %>
+    </td>
+
+    <td>
+      <%= ticker.category %>
+    </td>
+
+    <td>
+      <%= ticker.security_type %>
+    </td>
+
+    <td>
+      <%= ticker.url %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(ticker.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(ticker.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/tickers/<%= ticker.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
