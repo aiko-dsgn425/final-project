@@ -20,8 +20,6 @@ class UserTickerlistsController < ApplicationController
 
     @user_tickerlist.user_id = params.fetch("user_id")
     @user_tickerlist.ticker_id = params.fetch("ticker_id")
-    @user_tickerlist.tag_id = params.fetch("tag_id")
-    @user_tickerlist.watchlist = params.fetch("watchlist")
 
     if @user_tickerlist.valid?
       @user_tickerlist.save
@@ -43,8 +41,6 @@ class UserTickerlistsController < ApplicationController
 
     @user_tickerlist.user_id = params.fetch("user_id")
     @user_tickerlist.ticker_id = params.fetch("ticker_id")
-    @user_tickerlist.tag_id = params.fetch("tag_id")
-    @user_tickerlist.watchlist = params.fetch("watchlist")
 
     if @user_tickerlist.valid?
       @user_tickerlist.save

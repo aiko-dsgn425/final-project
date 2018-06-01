@@ -7,12 +7,12 @@
 #  annual_returns  :float
 #  ticker_id       :integer
 #  annualized_risk :float
-#  expense_ratio   :float
-#  current         :boolean
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :integer
 #
 
 class TickerStat < ApplicationRecord
+    validates :sharpe_ratio, :annual_returns, :ticker_id, :annualized_risk, :user_id, presence: true
     belongs_to :ticker
 end

@@ -15,6 +15,7 @@
 #
 
 class Portfolio < ApplicationRecord
+    validates :name, :user_id, presence: true
     has_many :portfolio_allocations, :dependent => :destroy
     belongs_to :user
 end

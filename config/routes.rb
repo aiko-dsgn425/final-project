@@ -8,27 +8,8 @@ Rails.application.routes.draw do
   get("/stock_info", { :controller => "tickers", :action => "show_stock_info" })
   
   # Tangent Portfolio
-  get("/calculate_optimalportfolio", { :controller => "portfolio", :action => "calculate_tangencyportfolio"})
+  get("/calculate_optimalportfolio", { :controller => "portfolio_allocations", :action => "calculate_tangencyportfolio"})
   
-  #------------------------------
-  
-  # Routes for the Tag resource:
-
-  # CREATE
-  get("/tags/new", { :controller => "tags", :action => "new_form" })
-  post("/create_tag", { :controller => "tags", :action => "create_row" })
-
-  # READ
-  get("/tags", { :controller => "tags", :action => "index" })
-  get("/tags/:id_to_display", { :controller => "tags", :action => "show" })
-
-  # UPDATE
-  get("/tags/:prefill_with_id/edit", { :controller => "tags", :action => "edit_form" })
-  post("/update_tag/:id_to_modify", { :controller => "tags", :action => "update_row" })
-
-  # DELETE
-  get("/delete_tag/:id_to_remove", { :controller => "tags", :action => "destroy_row" })
-
   #------------------------------
 
   # Routes for the User tickerlist resource:
@@ -115,7 +96,7 @@ Rails.application.routes.draw do
   post("/create_ticker", { :controller => "tickers", :action => "create_row" })
 
   # READ
-  get("/tickers", { :controller => "stocks", :action => "show_tickerlist" })
+  get("/tickers", { :controller => "tickers", :action => "index" })
   get("/tickers/:id_to_display", { :controller => "tickers", :action => "show" })
 
   # UPDATE

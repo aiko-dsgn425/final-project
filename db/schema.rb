@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526002053) do
+ActiveRecord::Schema.define(version: 20180601004655) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -63,28 +63,18 @@ ActiveRecord::Schema.define(version: 20180526002053) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "ticker_stats", force: :cascade do |t|
     t.float "sharpe_ratio"
     t.float "annual_returns"
     t.integer "ticker_id"
     t.float "annualized_risk"
-    t.float "expense_ratio"
-    t.boolean "current"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "tickers", force: :cascade do |t|
     t.string "symbol"
-    t.string "category"
-    t.string "security_type"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,8 +83,6 @@ ActiveRecord::Schema.define(version: 20180526002053) do
   create_table "user_tickerlists", force: :cascade do |t|
     t.integer "user_id"
     t.integer "ticker_id"
-    t.integer "tag_id"
-    t.boolean "watchlist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

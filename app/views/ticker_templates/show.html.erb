@@ -17,20 +17,6 @@
   </dd>
 
   <dt>
-    Category
-  </dt>
-  <dd>
-    <%= @ticker.category %>
-  </dd>
-
-  <dt>
-    Security type
-  </dt>
-  <dd>
-    <%= @ticker.security_type %>
-  </dd>
-
-  <dt>
     Url
   </dt>
   <dd>
@@ -51,6 +37,63 @@
     <%= time_ago_in_words(@ticker.updated_at) %> ago
   </dd>
 </dl>
+
+<h4>Stats Using Up-to-Date Data</h4>
+<p>
+    Avg Monthly Returns <%= @avg_monthly_return.round(2) * 100 %> %
+    Annual Returns <%= @avg_annual_return.round(2) * 100 %> %
+    Annual StDev <%= @annualized_stdev.round(2) * 100 %> %
+    Sharpe Ratio <%= @sharpe_ratio.round(2) %>
+</p>
+
+<% if TickerStat.where(ticker_id: @ticker.id, user_id: current_user.id).exists? %>
+
+<h4>
+  Currently Saved Stats
+</h4>
+  
+  <% TickerStat.where(ticker_id: @ticker.id, user_id: current_user.id).each do |tickerstat| %>
+    <p>
+        Annual Returns: <%= tickerstat.annual_returns * 100 %>
+    </p>
+    <p>
+        Annualized Risk: <%= tickerstat.annualized_risk * 100 %>
+    </p>
+    <p>
+        Sharpe Ratio: <%= tickerstat.sharpe_ratio.round(2) %>
+    </p>
+  <% end %>
+
+<form action="/update_ticker_stat/<%= @ticker.id %>" method="post">
+
+  <input type="hidden" id="sharpe_ratio" name="sharpe_ratio" class="form-control" value="<%= @sharpe_ratio %>">
+  <input type="hidden" id="annual_returns" name="annual_returns" class="form-control" value="<%= @avg_annual_return %>">
+  <input type="hidden" id="ticker_id" name="ticker_id" class="form-control" value="<%= @ticker.id  %>">
+  <input type="hidden" id="annualized_risk" name="annualized_risk" class="form-control" value="<%= @annualized_stdev %>">
+  <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update Stats Using Current Data
+  </button>
+</form>
+
+<% else %>
+
+<!--Save the Stats for this Ticker-->
+<form action="/create_ticker_stat" method="post">
+
+  <input type="hidden" id="sharpe_ratio" name="sharpe_ratio" class="form-control" value="<%= @sharpe_ratio %>">
+  <input type="hidden" id="annual_returns" name="annual_returns" class="form-control" value="<%= @avg_annual_return %>">
+  <input type="hidden" id="ticker_id" name="ticker_id" class="form-control" value="<%= @ticker.id  %>">
+  <input type="hidden" id="annualized_risk" name="annualized_risk" class="form-control" value="<%= @annualized_stdev %>">
+  <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+
+  <button class="btn btn-block btn-outline-secondary">
+    Save Ticker Stats
+  </button>
+</form>
+
+<% end %>
 
 <a href="/delete_ticker/<%= @ticker.id %>">
   Delete ticker

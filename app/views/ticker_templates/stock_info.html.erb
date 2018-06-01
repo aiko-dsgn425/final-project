@@ -1,0 +1,54 @@
+<h1>
+    Data for <%= @symbol %>
+</h1>
+
+<p>
+    Avg Monthly Returns <%= @avg_monthly_return.round(2) * 100 %> %
+    Annual Returns <%= @avg_annual_return.round(2) * 100 %> %
+    Annual StDev <%= @annualized_stdev.round(2) * 100 %> %
+    Sharpe Ratio <%= @sharpe_ratio.round(2) %>
+</p>
+
+
+<!--If Ticker already exists in database, then just save the User_Ticker association-->
+<% if Ticker.where(symbol: @symbol).exists? %>
+
+  <% Ticker.where(symbol: @symbol).each do |ticker| %>
+  <form action="/create_user_tickerlist" method="post">
+      <input type="hidden" id="ticker_id" name="ticker_id" class="form-control" value="<%= ticker.id %>">
+      <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+  
+    <button class="btn btn-block btn-outline-secondary">
+      Save to Your List
+    </button>
+  </form>
+  <% end %>
+
+<!--Otherwise, create the new ticker-->
+<% else %>
+  
+  <form action="/create_ticker" method="post">
+    
+    <!--Input for Ticker Name-->
+    <input type="hidden" id="symbol" name="symbol" class="form-control" value="<%= @symbol %>">
+    <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+
+    <button class="btn btn-block btn-outline-secondary">
+      Save Ticker to List
+    </button>
+  
+  </form>
+<% end %>
+
+<!--Save the Stats for this Ticker-->
+<form action="/create_ticker_stat" method="post">
+
+  <input type="hidden" id="sharpe_ratio" name="sharpe_ratio" class="form-control" value="<%= @sharpe_ratio %>">
+  <input type="hidden" id="annual_returns" name="annual_returns" class="form-control" value="<%= @avg_annual_return %>">
+  <input type="hidden" id="ticker_id" name="ticker_id" class="form-control" value="<%=  %>">
+  <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+
+  <button class="btn btn-block btn-outline-secondary">
+    Save Ticker Stats
+  </button>
+</form>

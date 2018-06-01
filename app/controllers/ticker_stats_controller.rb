@@ -22,13 +22,13 @@ class TickerStatsController < ApplicationController
     @ticker_stat.annual_returns = params.fetch("annual_returns")
     @ticker_stat.ticker_id = params.fetch("ticker_id")
     @ticker_stat.annualized_risk = params.fetch("annualized_risk")
-    @ticker_stat.expense_ratio = params.fetch("expense_ratio")
-    @ticker_stat.current = params.fetch("current")
+    #@ticker_stat.expense_ratio = params.fetch("expense_ratio")
+    @ticker_stat.user_id = params.fetch("user_id")
 
     if @ticker_stat.valid?
       @ticker_stat.save
 
-      redirect_to("/ticker_stats", :notice => "Ticker stat created successfully.")
+      redirect_to("/tickers/#{ @ticker_stat.ticker_id }", :notice => "Ticker stat created successfully.")
     else
       render("ticker_stat_templates/new_form.html.erb")
     end
@@ -47,6 +47,7 @@ class TickerStatsController < ApplicationController
     @ticker_stat.annual_returns = params.fetch("annual_returns")
     @ticker_stat.ticker_id = params.fetch("ticker_id")
     @ticker_stat.annualized_risk = params.fetch("annualized_risk")
+    @ticker_stat.user_id = params.fetch("user_id")
     @ticker_stat.expense_ratio = params.fetch("expense_ratio")
     @ticker_stat.current = params.fetch("current")
 
